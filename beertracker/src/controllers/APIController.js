@@ -16,7 +16,7 @@ class APIController {
     }
 
     /**
-     * Returns Geolocationn url with address parameters
+     * Returns Geolocation url with address parameters
      * @param params
      * @returns {string}
      */
