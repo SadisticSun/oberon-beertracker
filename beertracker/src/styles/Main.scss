@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css?family=Catamaran:800,900|Montserrat:500');
+
+html {
+  height: 100%;
+}
+
+body {
+  font-size: 20px;
+  color: #576574 !important;
+  font-family: 'Montserrat', sans-serif;
+  min-height: 100%;
+  height: fit-content;
+  .section {
+    padding: 0;
+    margin: 2em 0;
+  }
+}
+
+.hero {
+  background-image: url("/img/banner.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  color: white;
+  .overlay {
+    background-color: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+  }
+  .hero-body {
+    z-index: 1;
+    .title, .label {
+      color: white;
+      text-align: center;
+    }
+    .location-btn {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+}
+
+.title, .subtitle {
+  font-size: inherit;
+  font-family: 'Catamaran', sans-serif;
+}
+
+.search-input {
+  padding: 1em 2em;
+  border-radius: .5em;
+  display: block;
+  font-family: 'Catamaran', sans-serif;
+  transition: 0.2s;
+  width: auto;
+  margin: 0 auto;
+  will-change: transform;
+  outline: none;
+  &:focus {
+    transition: 0.2s;
+    border: 3px solid skyblue;
+  }
+  &:valid {
+    border: 3px solid aquamarine;
+  }
+  &:invalid {
+    border: 3px solid crimson;
+  }
+}
+
+.subtitle {
+  color: darkgrey;
+}
+
+button {
+  font-family: 'Catamaran', sans-serif;
+  color: white;
+}
+
+.card {
+  color: #576574;
+  border-radius: .5em;
+  border: 1px solid #c8d6e5;
+  margin-bottom: 1em;
+  box-shadow: 0 2px 3px #c8d6e5;
+  .title, .subtitle {
+    color: #576574;
+  }
+  .meta {
+    color: inherit;
+  }
+  .maps-link {
+    color: #0abde3;
+    position: absolute;
+    right: 1em;
+    bottom: 1em;
+    &:hover {
+      color: darken(#0abde3, 2);
+    }
+  }
+}
+
+.btn-label {
+  margin: 0 .5em;
+}
+
+
