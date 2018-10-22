@@ -143,24 +143,31 @@ function getCurrentPosition(options = {}) {
  * @returns {Function}
  */
 export const appendLocationDataToBreweries = () => async dispatch => {
-    try {
-        dispatch(toggleLoadingState(true));
-        const data = DataController.getAllBreweries();
-        const locationData = data.map(async brewery => {
-            return APIController.getGeolocationData(brewery.address)
-                .then(geodata => {
-                    brewery.coords = geodata.data.results[0].geometry.location;
-                    return brewery;
+    const hasApiKey = APIController.checkApiKey();
+    console.log(hasApiKey)
+    if (hasApiKey) {
+        try {
+            dispatch(toggleLoadingState(true));
+            const data = DataController.getAllBreweries();
+            const locationData = data.map(async brewery => {
+                return APIController.getGeolocationData(brewery.address)
+                    .then(geodata => {
+                        brewery.coords = geodata.data.results[0].geometry.location;
+                        return brewery;
+                    })
+            });
+            Promise.all(locationData)
+                .then(results => {
+                    dispatch(toggleLoadingState(false));
+                    dispatch(storeBreweries(results));
                 })
-        });
-        Promise.all(locationData)
-            .then(results => {
-                dispatch(toggleLoadingState(false));
-                dispatch(storeBreweries(results));
-            })
-    } catch (error) {
-        dispatch(showError())
+        } catch (error) {
+            dispatch(showError())
+        }
+    } else {
+        dispatch(showError('Geen API key aanwezig in .env'))
     }
+
 };
 
 /**

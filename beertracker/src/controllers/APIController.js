@@ -8,6 +8,14 @@ class APIController {
     }
 
     /**
+     * Check if API key is not undefined
+     * @returns {boolean}
+     */
+    checkApiKey(){
+        return this._geolocationApiKey !== undefined;
+    }
+
+    /**
      * Returns Geolocationn url with address parameters
      * @param params
      * @returns {string}
